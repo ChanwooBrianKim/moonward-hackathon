@@ -2,20 +2,99 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Root variables for color themes */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #0070f3;
+  --secondary: #ff4081;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --primary: #1e90ff;
+    --secondary: #ff79c6;
   }
 }
 
+/* Base body styling */
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Geist", Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Utility for Pokémon card gradients */
+.pokemon-card {
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  color: white;
+  font-weight: bold;
+  background: linear-gradient(45deg, #78c850, #f08030); /* Example gradient */
+}
+
+.pokemon-card:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Geist", Arial, sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--secondary);
+}
+
+/* Pokémon list container */
+.pokemon-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+/* Side sheet for Pokémon details */
+.side-sheet {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 300px;
+  background-color: var(--background);
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+/* Close button */
+.close-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--foreground);
+  background: none;
+  color: var(--foreground);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.close-btn:hover {
+  background: var(--foreground);
+  color: var(--background);
+  transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
 }
